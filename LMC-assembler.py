@@ -19,7 +19,8 @@ def main(argv):
         sys.exit()
 
     tokens = pythonize(argv[1])
-    print get_symbols(tokens)
+    symbols = get_symbols(tokens)
+    print assemble(tokens, symbols)
 
 def pythonize(infile):
     """Read the input file and produce easy to parse data structures.
@@ -39,17 +40,34 @@ def pythonize(infile):
     return lines
 
 def get_symbols(token_list):
-    """Find all of the symbols used in the assembly ccde.
+    """Find all of the symbols used in the assembly code.
 
-    Returns a list of tuples. Tuples are of form (mailbox number, 'symbol')
+    Returns a dictionary. Keys are symbol names, values are mailbox numbers. 
     """
     symbols = []
     for i, line in zip(range(len(token_list)), token_list):
+        # ignore blank lines
         if not line:
             break
         if line[0] not in instructions.keys():
-            symbols.append((i, line[0]))
-    return symbols
+            symbols.append((line[0], i))
+    return dict(symbols)
+
+def assemble(token_list, symbols):
+    program = ''
+    for line in token_list:
+        instruction = ''
+        # ignore blank lines
+        if not line:
+            break
+        for token in line:
+            if token not in symbols.keys():
+                instruction += token
+
+
+        program += instruction+'\n'
+
+    return program
 
 main(sys.argv)
 
