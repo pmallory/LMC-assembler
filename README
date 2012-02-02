@@ -1,4 +1,4 @@
-LMC-assembler
+LMC-assembler - Version 0.5
 
 LMC-assembler is a two pass assembler for the Little Man Computer (LMC). The
 LMC is a very basic computer used for teaching the Von Neuman architecture,
@@ -21,4 +21,12 @@ LMC overview:
 
 For more information:
 http://en.wikipedia.org/wiki/Little_man_computer
+
+Version History:
+0.5 - works on valid input, hasn't been extensively tested
+
+Roadmap:
+write unit tests
+do syntax checking
+output to file
 

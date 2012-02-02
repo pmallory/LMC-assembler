@@ -11,7 +11,8 @@ instructions = {'ADD': 100,
                 'BRP': 800, 
                 'INP': 901, 
                 'OUT': 902, 
-                'HLT': 000 }
+                'HALT': 000,
+                'DAT': 000 }
 
 def main(argv):
     if len(argv) is not 2: 
@@ -56,16 +57,19 @@ def get_symbols(token_list):
 def assemble(token_list, symbols):
     program = ''
     for line in token_list:
-        instruction = ''
+        instruction = 0 
         # ignore blank lines
         if not line:
             break
-        for token in line:
-            if token not in symbols.keys():
-                instruction += token
+        for i, token in zip(range(len(line)), line):
+            if token in instructions.keys():
+                instruction += instructions[token]
+            elif token in symbols.keys() and i != 0:
+                instruction += symbols[token]
+            elif token.isdigit():
+                instruction += int(token)
 
-
-        program += instruction+'\n'
+        program += str('%03d'%instruction)+'\n'
 
     return program
 
