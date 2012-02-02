@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 import sys
 
 instructions = {'ADD': 100, 
@@ -13,7 +14,11 @@ instructions = {'ADD': 100,
                 'HLT': 000 }
 
 def main(argv):
-    tokens = pythonize(argv)
+    if len(argv) is not 2: 
+        print 'Specify a file to assemble.\nusage: LMC-assembler input.asm'
+        sys.exit()
+
+    tokens = pythonize(argv[1])
     print get_symbols(tokens)
 
 def pythonize(infile):
@@ -24,16 +29,19 @@ def pythonize(infile):
     included as empty lists.
     """
     lines = []
-    with open(infile, 'r') as asm:
-        for line in asm:
-            lines.append(line.split())
+    try:
+        with open(infile, 'r') as asm:
+            for line in asm:
+                lines.append(line.split())
+    except EnvironmentError:
+        print 'Specify a valid file as input\nusage: LMC-assembler input.asm'
+        sys.exit()
     return lines
 
 def get_symbols(token_list):
     """Find all of the symbols used in the assembly ccde.
 
     Returns a list of tuples. Tuples are of form (mailbox number, 'symbol')
-
     """
     symbols = []
     for i, line in zip(range(len(token_list)), token_list):
@@ -43,5 +51,5 @@ def get_symbols(token_list):
             symbols.append((i, line[0]))
     return symbols
 
-main(sys.argv[1])
+main(sys.argv)
 
