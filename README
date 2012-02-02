@@ -4,6 +4,8 @@ LMC-assembler is a two pass assembler for the Little Man Computer (LMC). The
 LMC is a very basic computer used for teaching the Von Neuman architecture,
 assembly, etc.
 
+usage: LMC-assembler input.asm
+
 LMC overview:
     -All values (instructions, memory locations, register size) are 3 digits.
         Those are decimal digits.
