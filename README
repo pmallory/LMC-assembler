@@ -1,0 +1,13 @@
+LMC-assembler version 0.0.1
+
+LMC-assembler is a two pass assembler for the Little Man Computer (LMC). The
+LMC is a very basic computer used for teaching the Von Neuman architecture,
+assembly,and the stack.
+
+For more information:
+http://elearning.algonquincollege.com/coursemat/dat2343/lectures.f03/12-LMC.htm
+
+change log:
+0.0.1 - new project
+
+
