@@ -1,13 +1,23 @@
-LMC-assembler version 0.0.1
+LMC-assembler
 
 LMC-assembler is a two pass assembler for the Little Man Computer (LMC). The
 LMC is a very basic computer used for teaching the Von Neuman architecture,
-assembly,and the stack.
+assembly, etc.
+
+LMC overview:
+    -All values (instructions, memory locations, register size) are 3 digits.
+        Those are decimal digits.
+    -There are 100 memory locations numbered 0-99. These are called "mailboxes"
+    -There are very few instructions. They are add, subtract, load, store,
+       branch, read input, print output, and halt.
+    -There are two registers, the program counter (the "Counter") and a general
+        purpose register (the "Calculator").
+    -Instructions take one argument, a mailbox number. Some instructions use
+        the contents of the Calculator as a second operand.
+    -User input can be read and placed in the Calculator, or output can be
+        displayed form the calculator.
 
 For more information:
 http://elearning.algonquincollege.com/coursemat/dat2343/lectures.f03/12-LMC.htm
-
-change log:
-0.0.1 - new project
 
 
